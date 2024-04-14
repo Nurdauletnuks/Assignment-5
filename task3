@@ -1,0 +1,123 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Furniture {
+    private String name;
+    private String style;
+    private String material;
+    private float price;
+
+    public Furniture(String name, String style, String material, float price) {
+        this.name = name;
+        this.style = style;
+        this.material = material;
+        this.price = price;
+    }
+}
+
+abstract class FurnitureFactory {
+    public abstract Chair createChair();
+    public abstract Table createTable();
+    public abstract Sofa createSofa();
+}
+
+class Chair {}
+
+class Table {}
+
+class Sofa {}
+
+class ModernWoodFactory extends FurnitureFactory {
+    @Override
+    public Chair createChair() {
+        return new Chair();
+    }
+
+    @Override
+    public Table createTable() {
+        return new Table();
+    }
+
+    @Override
+    public Sofa createSofa() {
+        return new Sofa();
+    }
+}
+
+class TraditionalMetalFactory extends FurnitureFactory {
+    @Override
+    public Chair createChair() {
+        return new Chair();
+    }
+
+    @Override
+    public Table createTable() {
+        return new Table();
+    }
+
+    @Override
+    public Sofa createSofa() {
+        return new Sofa();
+    }
+}
+
+class IndustrialGlassFactory extends FurnitureFactory {
+    @Override
+    public Chair createChair() {
+        return new Chair();
+    }
+
+    @Override
+    public Table createTable() {
+        return new Table();
+    }
+
+    @Override
+    public Sofa createSofa() {
+        return new Sofa();
+    }
+}
+
+class FurnitureCreator {
+    private FurnitureFactory factory;
+
+    public void setFactory(FurnitureFactory factory) {
+        this.factory = factory;
+    }
+
+    public Chair createChair() {
+        return factory.createChair();
+    }
+
+    public Table createTable() {
+        return factory.createTable();
+    }
+
+    public Sofa createSofa() {
+        return factory.createSofa();
+    }
+}
+
+public class FurnitureMarketplace {
+    public static void main(String[] args) {
+        FurnitureCreator creator = new FurnitureCreator();
+
+        FurnitureFactory modernWoodFactory = new ModernWoodFactory();
+        creator.setFactory(modernWoodFactory);
+        Chair modernWoodChair = creator.createChair();
+        Table modernWoodTable = creator.createTable();
+        Sofa modernWoodSofa = creator.createSofa();
+
+        FurnitureFactory traditionalMetalFactory = new TraditionalMetalFactory();
+        creator.setFactory(traditionalMetalFactory);
+        Chair traditionalMetalChair = creator.createChair();
+        Table traditionalMetalTable = creator.createTable();
+        Sofa traditionalMetalSofa = creator.createSofa();
+
+        FurnitureFactory industrialGlassFactory = new IndustrialGlassFactory();
+        creator.setFactory(industrialGlassFactory);
+        Chair industrialGlassChair = creator.createChair();
+        Table industrialGlassTable = creator.createTable();
+        Sofa industrialGlassSofa = creator.createSofa();
+    }
+}
